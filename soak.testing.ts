@@ -5,15 +5,15 @@ import http from 'k6/http';
 export const options: Options = {
     stages: [
         {
-            duration: '10s',
-            target: 10
+            duration: '5m',
+            target: 1000
         },
         {
-            duration: '30s',
-            target: 10
+            duration: '12h',
+            target: 1000
         },
         {
-            duration: '10s',
+            duration: '5m',
             target: 0
         }
     ]
@@ -21,6 +21,7 @@ export const options: Options = {
 
 export default () => {
     const res = http.get('https://quickpizza.grafana.com');
+    sleep(1)
     check(res, {
         'status is 200': () => res.status === 200,
     });
