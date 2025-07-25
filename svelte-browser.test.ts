@@ -5,6 +5,9 @@ export const options = {
   scenarios: {
     browser: {
       executor: 'shared-iterations',
+      vus: 5,
+      iterations: 10,
+      maxDuration: '30s',
       options: {
         browser: {
           type: 'chromium',
@@ -12,11 +15,14 @@ export const options = {
       },
     },
   },
+  thresholds: {
+    browser_web_vital_fcp: ['p(95)<1500'], // First Contentful Paint
+    browser_web_vital_lcp: ['p(95)<2000'], // Largest Contentful Paint
+  },
 }
 
 export default async function () {
   const page = await browser.newPage();
-
 
   await page.goto('https://quickpizza.grafana.com');
 
