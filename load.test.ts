@@ -3,7 +3,6 @@ import { Options } from 'k6/options';
 import http from 'k6/http';
 
 export const options: Options = {
-
     stages: [
         {
             duration: '10s',
@@ -27,7 +26,7 @@ export default () => {
             'User-Agent': 'k6-load-test'
         }
     });
-
+    console.log(res.headers['Content-Type']);
     check(res, {
         'status is 200': () => res.status === 200,
         'body is not empty': () => res.body ? (typeof res.body === 'string' ? res.body.length > 0 : res.body.byteLength > 0) : false,
