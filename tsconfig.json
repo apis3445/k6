@@ -5,6 +5,7 @@
     "strict": true,
     "types": ["k6"],
     "lib": ["esnext", "dom"],
-    "typeRoots": ["./types", "./node_modules/@types"]
+    "typeRoots": ["./types", "./node_modules/@types"],
+    "forceConsistentCasingInFileNames": true
   }
 }
