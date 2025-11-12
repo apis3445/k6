@@ -68,6 +68,9 @@ k6 run --out html=report.html load.test.ts
 
 # Generate JSON summary
 k6 run --summary-export=summary.json load.test.ts
+
+# Skip ssl validation
+k6 run load.test.ts --insecure-skip-tls-verify
 ```
 
 ### TypeScript Support
